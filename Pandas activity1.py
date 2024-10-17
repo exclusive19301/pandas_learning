@@ -44,6 +44,71 @@ df = pd.DataFrame({
     "Interesting Feature": planet_interesting_feature
 })
 
+new_data = pd.DataFrame({
+    "Discovered By": [
+        "Known since ancient times", 
+        "Known since ancient times", 
+        "Known since ancient times", 
+        "Known since ancient times", 
+        "Known since ancient times", 
+        "Known since ancient times", 
+        "William Herschel", 
+        "Johann Galle"
+    ],
+    "Year Discovered": [
+        "Prehistory", 
+        "Prehistory", 
+        "Prehistory", 
+        "Prehistory", 
+        "Prehistory", 
+        "Prehistory", 
+        1781, 
+        1846
+    ],
+    "Composition": [
+        "Mercury: Iron, Silicon", 
+        "Venus: Carbon dioxide, Nitrogen", 
+        "Earth: Nitrogen, Oxygen", 
+        "Mars: Carbon dioxide, Nitrogen", 
+        "Jupiter: Hydrogen, Helium", 
+        "Saturn: Hydrogen, Helium", 
+        "Uranus: Hydrogen, Helium, Methane", 
+        "Neptune: Hydrogen, Helium, Methane"
+    ]
+})
+
+df = pd.concat([df, new_data], axis=1)
+
+df["Year Discovered"] = ["Prehistory", "Prehistory", "Prehistory", "Prehistory", "Prehistory", "Prehistory", 1781, 1846]
+
+# Adding the 'Discovered By' column
+discovered_by = [
+    "Babylonians",         
+    "Babylonians",         
+    "Ptolemy",              
+    "Babylonians",          
+    "Babylonians",          
+    "Babylonians",          
+    "William and Caroline Herschel",  
+    "John Couch Adams and Urbain Le Verrier"  
+]
+
+pluto_data = pd.DataFrame({
+    "Name": ["Pluto"],
+    "Average Temperature (°C)": [-232],
+    "Radius (KM)": [1188.3],
+    "Colour": ["RedDark & Gray"],
+    "Interesting Feature": ["Reclassified as a dwarf planet"],
+    "Year Discovered": [1930],
+    "Discovered By": ["Clyde Tombaugh"],
+    "Composition": ["Pluto: Nitrogen, Methane, Carbon Monoxide"]
+})
+
+df = pd.concat([df, pluto_data], ignore_index=True)
+
+
+df = df. set_index( "Name" )
+
 print(df)
 
-df.to_excel("planets.xlsx")
+# df.to_excel("planets.xlsx")
