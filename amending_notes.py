@@ -39,6 +39,7 @@ df. rename(columns={"Ranking" : "Ranking 2023"}, inplace=True)
 
 # df = pd. concat([df,new_data], axis=1)
 
+
 df = df. set_index( "Languages" )
 
 print(df)
